@@ -214,9 +214,9 @@ client.on('ready', () => {
   });
 });
 client.on('guildMemberAdd', member=> {
-    member.addRole(member.guild.roles.find("name","- EIght , Member"));
+    member.addRole(member.guild.roles.find("name","·)» FN"));
     });
-const devs = ["462038057529507841"];
+const devs = [""];
 const adminprefix = ["$"];
 client.on('message', message => {
     var argresult = message.content.split(` `).slice(1).join(' ');
@@ -1225,33 +1225,27 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
- 
-    if (message.content === "$mc") {
-                        if(!message.channel.guild) return message.reply(' This command only for servers');
- 
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
-           message.channel.overwritePermissions(message.guild.id, {
-         SEND_MESSAGES: false
- 
-           }).then(() => {
-               message.reply("تم تقفيل الشات ✅ ")
-           });
-             }
-if (message.content === "$umc") {
-    if(!message.channel.guild) return message.reply(' This command only for servers');
- 
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('ليس لديك صلاحيات');
-           message.channel.overwritePermissions(message.guild.id, {
-         SEND_MESSAGES: true
- 
-           }).then(() => {
-               message.reply("تم فتح الشات✅")
-           });
-             }
- 
- 
- 
-});
+        if(message.content === prefix + "hide") {
+        if(!message.channel.guild) return;
+        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You Dont Have Perms ❌');
+               message.channel.overwritePermissions(message.guild.id, {
+               READ_MESSAGES: false
+   })
+                message.channel.send('Channel Hided Successfully ! ✅  ')
+   }
+  });
+
+
+client.on('message', message => {
+        if(message.content === prefix + "show") {
+        if(!message.channel.guild) return;
+        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('❌');
+               message.channel.overwritePermissions(message.guild.id, {
+               READ_MESSAGES: true
+   })
+                message.channel.send('Done  ')
+   }
+  });
 
 client.on('message', async message => {
   if(message.author.bot) return;
@@ -1312,14 +1306,6 @@ client.on('message', function(message) {
     }
 });
 
-client.on('guildMemberAdd', member => {
-  
-  const channel = member.guild.channels.find(ch => ch.name === 'eight');
- 
-  if (!channel) return;
-
-  channel.send(`Welcomme To Eight Server , ${member}`);
-})
 
 client.on("message", message => {
     const prefix = "$"
@@ -1351,7 +1337,7 @@ client.on('guildMemberAdd', member => {
         .addField('•🌹|Welcome » نورت السيرفر' , `Welcome to the server, ${member}`)
         .addField('•🆔| User » اي دي العضو', "**[" + `${member.id}` + "]**" )
                 .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)                     
-                                     .addField('•🔮|Server Name » اسم السيرفر', `${member.guild.name}`,true)
+                                     .addField('•🔮|Server Name » Fistival Network', `${member.guild.name}`,true)
     .addField('•🕣|Time Create » مدة انشاء حسابك', member.user.createdAt.toLocaleString(), true)
  
                                        
