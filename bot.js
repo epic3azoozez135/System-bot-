@@ -93,6 +93,7 @@ client.on('message', message => {
     });
   }
 });
+const ms = require("ms");
   client.on("message", message => {
  if(!message.channel.guild) return;  
   if (message.author.bot) return;
@@ -119,8 +120,8 @@ client.on('message', message => {
 };
  
 });
-
-
+ 
+ 
 client.on('message',function(message) {
  if(!message.channel.guild) return;    let messageArray = message.content.split(' ');
     let muteRole =  message.guild.roles.find('name', 'Muted');
@@ -128,14 +129,14 @@ client.on('message',function(message) {
     let muteReason = messageArray[2];
     let muteDuration = messageArray[3];
  if (message.content.split(" ")[0].toLowerCase() === prefix + "mute") {
-            
+           
   if (message.author.bot) return;
        if(!muteRole) return message.guild.createRole({name: 'Muted'}).then(message.guild.channels.forEach(chan => chan.overwritePermissions(muteRole, {SEND_MESSAGES:false,ADD_REACTIONS:false})));
        if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return message.channel.send(' Error : You Need `` MANAGE_ROLES ``Permission ');
        if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.channel.send(' Error : I Don’t Have `` MANAGE_ROLES ``Permission ');
-       if(!muteMember) return message.channel.send(' منشن شخص').then(message => message.delete(4000))
-       if(!muteReason) return message.channel.send(' ضع السبب').then(message => message.delete(4000))
-       if(!muteDuration) return message.channel.send(' ضع مدة الميوت \n مثال: #mute @user reason 1m ').then(message => message.delete(4000))
+       if(!muteMember) return message.channel.send(' Error : ``Mention a User``').then(message => message.delete(4000))
+       if(!muteReason) return message.channel.send(' Error : ``Supply a Reason``').then(message => message.delete(4000))
+       if(!muteDuration) return message.channel.send(' Error : `` Supply Mute Time `` \n Ex: #mute @user reason 1m ').then(message => message.delete(4000))
        if(!muteDuration.match(/[1-7][s,m,h,d,w]/g)) return message.channel.send(' Error : `` Invalid Mute Duration``').then(message => message.delete(4000))
        message.channel.send(`${muteMember} Has Been Muted.`).then(message => message.delete(5000))
        muteMember.addRole(muteRole);
@@ -145,8 +146,9 @@ client.on('message',function(message) {
            muteMember.setMute(false)
        }, mmss(muteDuration));
        });
-   } 
+   }
 });
+
 client.on('message', message => {
   if (message.author.omar) return;
   if (!message.content.startsWith(prefix)) return;
