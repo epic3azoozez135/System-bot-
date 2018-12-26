@@ -93,6 +93,7 @@ client.on('message', message => {
     });
   }
 });
+
 const ms = require("ms");
   client.on("message", message => {
  if(!message.channel.guild) return;  
